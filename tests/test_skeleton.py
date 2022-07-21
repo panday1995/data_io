@@ -1,9 +1,9 @@
 import pytest
 
-from dat_inout.skeleton import fib, main
+from data_io.skeleton import fib, main
 
-__author__ = "Cmmmä¸¶"
-__copyright__ = "Cmmmä¸¶"
+__author__ = "Fan Yang"
+__copyright__ = "Fan Yang"
 __license__ = "MIT"
 
 

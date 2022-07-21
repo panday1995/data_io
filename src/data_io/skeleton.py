@@ -24,10 +24,10 @@ import argparse
 import logging
 import sys
 
-from dat_inout import __version__
+from data_io import __version__
 
-__author__ = "Cmmmä¸¶"
-__copyright__ = "Cmmmä¸¶"
+__author__ = "Fan"
+__copyright__ = "Fan Yang"
 __license__ = "MIT"
 
 _logger = logging.getLogger(__name__)
