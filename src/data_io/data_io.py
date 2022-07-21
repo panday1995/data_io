@@ -21,7 +21,7 @@ class DataStore:
     def __init__(
         self,
         data,
-        yml_file
+        yml_file="schema.yaml"
     ) -> None:
         self.data_to_store = data
         self.cfg_dict = cfg(yml_file)
@@ -46,7 +46,7 @@ class DataRetri:
 
     def __init__(
         self,
-        yml_file
+        yml_file="schema.yaml"
     ) -> None:
         self.cfg_dict = cfg(yml_file)
 
