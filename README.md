@@ -19,10 +19,12 @@ To use the package, a `schema.yaml` file to specify. Currently, the template `sc
 ```yaml
 FILE_NAME: test_out.csv
 PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
-pkg_name: test_pkg
+pkg_name: test_pkg 
 ```
 
-With the template `schema.file`, one can use the `data_io` package as:
+Any suggestions on modifying the file is super welcomed. </br>
+
+With the `schema.file` as a configuration file, one can use the `data_io` package as:
 
 ```python
 from data_io import DataStore, DataRetri
