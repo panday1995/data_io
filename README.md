@@ -1,7 +1,7 @@
 # data_io
 
 ![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+![License](https://img.shields.io/badge/license-MIT-green.svg) <!--(https://opensource.org/licenses/MIT)-->
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
 
 `data_io` facilitates your data storage and retrieval in the KR project.
