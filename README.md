@@ -43,3 +43,11 @@ df = DataRetri(config)
 DataStore(df, config)
 
 ```
+
+## Features
+
+- An standardized IO process for tublar data in the KR project
+
+### Upcoming features
+
+- Add the capability of reading in multiple files as multiple `DataFrame`
