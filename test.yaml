@@ -1,3 +1,6 @@
-FILE_NAME: test_out.csv
-PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
-pkg_name: test_pkg
+INPUT_FILE: test.csv
+INPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
+
+OUTPUT_FILE: test.csv
+OUTPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
+pkg_name: test
