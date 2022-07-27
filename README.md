@@ -1,6 +1,7 @@
 # data_io
 
 ![Python](https://img.shields.io/badge/python-v3.8+-blue.svg)
+![version](https://img.shields.io/badge/version-v0.0.1-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green.svg) <!--(https://opensource.org/licenses/MIT)-->
 ![Contributions welcome](https://img.shields.io/badge/contributions-welcome-orange.svg)
 
