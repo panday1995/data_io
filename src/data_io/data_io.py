@@ -21,14 +21,27 @@ class DataStore:
     def __init__(
         self,
         data,
-        yml_file="schema.yaml"
+        yml_file="schema.yaml",
+        file_name = None
     ) -> None:
         self.data_to_store = data
         self.cfg_dict = cfg(yml_file)
+        self.file_name = file_name
+
+    def _read_input(self):
+        output_ls = self.cfg_dict["OUTPUT"]
+        if len(output_ls)<=1:
+            return output_ls[0]["OUTPUT_PATH"], output_ls[0]["OUTPUT_FILE"]
+
+        else:
+            for output_file in output_ls:
+                if self.file_name in output_file["OUTPUT_FILE"]:
+                    return output_file["OUTPUT_PATH"], output_file["OUTPUT_FILE"]
+                else:
+                    print("file not registered in the config file")
 
     def store_to(self):
-        dir_path = self.cfg_dict["OUTPUT_PATH"]
-        file_name = self.cfg_dict["OUTPUT_FILE"]
+        dir_path, file_name = self._read_input()
         file_path = os.path.join(dir_path, file_name)
         try:
             self.data_to_store.to_csv(file_path)
@@ -71,7 +84,6 @@ class DataRetri:
 
     def retrieve_one(self, file_name):
         dir_path, file_name = self._read_input(file_name)
-        file_name = self.cfg_dict
         file_path = os.path.join(dir_path, file_name)
 
         return self._retrieve_data(file_path)

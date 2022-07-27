@@ -31,11 +31,18 @@ class TestDataStore:
         file_path = DataStore(data_to_store, "test.yaml").store_to()
         assert os.path.exists(file_path)
 
+        file_path = DataStore(data_to_store, "test2.yaml", "test_out2.csv").store_to()
+        assert os.path.exists(file_path)
+
 
 class TestDataRetri:
 
     def test_init(self):
         assert DataRetri("test.yaml")
+
+    def test_retrieve_one(self):
+        data = DataRetri("test.yaml").retrieve_one("test1")
+        assert isinstance(data, (pd.DataFrame or pd.Series))
 
     def test_retrieve_all(self):
         data_dict = DataRetri("test.yaml").retrieve_all()
