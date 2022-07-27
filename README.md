@@ -8,6 +8,8 @@
 
 ## Installation
 
+`data_io` relied on a Python package manager for its installation. Make sure `pip` is installed and added into your system environmental variables, then copy & paste the following command in your terminal
+
 ```shell
 python -m pip install "git+https://{your_user_name}:{your_password}@source.coderefinery.org/krproject/architecture/utils/data_io.git#egg=data_io"
 ```
@@ -17,9 +19,12 @@ python -m pip install "git+https://{your_user_name}:{your_password}@source.coder
 To use the package, a `schema.yaml` file to specify. Currently, the template `schema.yaml` looks like:
 
 ```yaml
-FILE_NAME: test_out.csv
-PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
-pkg_name: test_pkg 
+INPUT_FILE: test.csv
+INPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
+
+OUTPUT_FILE: test.csv
+OUTPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
+pkg_name: test
 ```
 
 Any suggestions on modifying the file is super welcomed. </br>
