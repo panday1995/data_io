@@ -19,9 +19,7 @@ class TestYmlConfig:
     def test_cfg(self):
         cfg_dict = cfg("test.yaml")
         assert isinstance(cfg_dict, dict)
-        assert cfg_dict["pkg_name"] == "test_pkg"
-        assert cfg_dict["OUTPUT_PATH"] == r"//plan-fs2.srv.aau.dk/Fileshares/KRproject/data"
-        assert cfg_dict["OUTPUT_FILE"] == "test.csv"
+        assert cfg_dict["pkg_name"] == "test"
 
 
 class TestDataStore:
@@ -39,6 +37,8 @@ class TestDataRetri:
     def test_init(self):
         assert DataRetri("test.yaml")
 
-    def test_retrieve_from(self):
-        data = DataRetri("test.yaml").retrieve_from()
-        assert isinstance(data, pd.DataFrame or pd.Series)
+    def test_retrieve_all(self):
+        data_dict = DataRetri("test.yaml").retrieve_all()
+        assert isinstance(data_dict, dict)
+        for value in data_dict.values():
+            assert isinstance(value, (pd.DataFrame or pd.Series))

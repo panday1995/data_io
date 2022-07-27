@@ -50,10 +50,15 @@ class DataRetri:
     ) -> None:
         self.cfg_dict = cfg(yml_file)
 
-    def retrieve_from(self):
-        dir_path = self.cfg_dict["INPUT_PATH"]
-        file_name = self.cfg_dict["INPUT_FILE"]
-        file_path = os.path.join(dir_path, file_name)
+    def _read_input(self, file_name):
+        input_ls = self.cfg_dict["INPUT"]
+        for input_file in input_ls:
+            if file_name in input_file["INPUT_FILE"]:
+                return input_file["INPUT_PATH"], input_file["INPUT_FILE"]
+            else:
+                print("file not registered in the config file")
+
+    def _retrieve_data(self, file_path):
         try:
             data = pd.read_csv(file_path)
         except:
@@ -63,3 +68,20 @@ class DataRetri:
                 data = pickle.load(data_file)
         print(f"The file is retrived at {file_path}")
         return data
+
+    def retrieve_one(self, file_name):
+        dir_path, file_name = self._read_input(file_name)
+        file_name = self.cfg_dict
+        file_path = os.path.join(dir_path, file_name)
+
+        return self._retrieve_data(file_path)
+
+    def retrieve_all(self):
+        data_dict = {}
+        for input_file in self.cfg_dict["INPUT"]:
+            dir_path, file_name = input_file["INPUT_PATH"], input_file["INPUT_FILE"]
+            file_path = os.path.join(dir_path, file_name)
+            data = self._retrieve_data(file_path)
+            data_dict[file_name] = data
+
+        return data_dict
