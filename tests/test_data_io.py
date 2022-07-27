@@ -8,11 +8,11 @@ from data_io.yml_config import cfg
 
 data_to_store = pd.DataFrame({"a": [1, 2, 3, 4], "b": [2, 3, 4, 6]})
 
-yml_dict = dict(pkg_name="test_pkg",
-                PATH=r"//plan-fs2.srv.aau.dk/Fileshares/KRproject/data",
-                FILE_NAME="test_out.csv")
-with open("test.yaml", "w") as yml:
-    yaml.dump(yml_dict, yml)
+# yml_dict = dict(pkg_name="test_pkg",
+#                 PATH=r"//plan-fs2.srv.aau.dk/Fileshares/KRproject/data",
+#                 FILE_NAME="test.csv")
+# with open("test.yaml", "w") as yml:
+#     yaml.dump(yml_dict, yml)
 
 
 class TestYmlConfig:
@@ -20,8 +20,8 @@ class TestYmlConfig:
         cfg_dict = cfg("test.yaml")
         assert isinstance(cfg_dict, dict)
         assert cfg_dict["pkg_name"] == "test_pkg"
-        assert cfg_dict["PATH"] == r"//plan-fs2.srv.aau.dk/Fileshares/KRproject/data"
-        assert cfg_dict["FILE_NAME"] == "test_out.csv"
+        assert cfg_dict["OUTPUT_PATH"] == r"//plan-fs2.srv.aau.dk/Fileshares/KRproject/data"
+        assert cfg_dict["OUTPUT_FILE"] == "test.csv"
 
 
 class TestDataStore:

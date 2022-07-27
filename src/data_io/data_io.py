@@ -27,8 +27,8 @@ class DataStore:
         self.cfg_dict = cfg(yml_file)
 
     def store_to(self):
-        dir_path = self.cfg_dict["PATH"]
-        file_name = self.cfg_dict["FILE_NAME"]
+        dir_path = self.cfg_dict["OUTPUT_PATH"]
+        file_name = self.cfg_dict["OUTPUT_FILE"]
         file_path = os.path.join(dir_path, file_name)
         try:
             self.data_to_store.to_csv(file_path)
@@ -51,8 +51,8 @@ class DataRetri:
         self.cfg_dict = cfg(yml_file)
 
     def retrieve_from(self):
-        dir_path = self.cfg_dict["PATH"]
-        file_name = self.cfg_dict["FILE_NAME"]
+        dir_path = self.cfg_dict["INPUT_PATH"]
+        file_name = self.cfg_dict["INPUT_FILE"]
         file_path = os.path.join(dir_path, file_name)
         try:
             data = pd.read_csv(file_path)
