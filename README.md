@@ -20,12 +20,19 @@ python -m pip install "git+https://{your_user_name}:{your_password}@source.coder
 To use the package, a `schema.yaml` file to specify. Currently, the template `schema.yaml` looks like:
 
 ```yaml
-INPUT_FILE: test.csv
-INPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
-
-OUTPUT_FILE: test.csv
-OUTPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
 pkg_name: test
+
+INPUT:
+  - INPUT_FILE: test1.csv
+    INPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
+  - INPUT_FILE: test2.csv
+    INPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
+
+OUTPUT:
+  - OUTPUT_FILE: test_out1.csv
+    OUTPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
+  - OUTPUT_FILE: test_out2.csv
+    OUTPUT_PATH: //plan-fs2.srv.aau.dk/Fileshares/KRproject/data
 ```
 
 Any suggestions on modifying the file is super welcomed. </br>
@@ -37,11 +44,19 @@ from data_io import DataStore, DataRetri
 
 config = "schema.yaml"
 
-# to retrieve data from a path and read in as a DataFrame
-df = DataRetri(config)
+# to retrieve all .csv files and read in as a dictionary with file_name as key and DataFrame as value
+data_dict = DataRetri(config).retrieve_all()
 
-# to store data into a path as a .csv file
-DataStore(df, config)
+# to retrieve only one .csv file and read in as a DataFrame
+file_name = "test.csv"
+df = DataRetri(config).retrieve_one(file_name)
+
+# to store a DataFrame into a path as a .csv file
+data_to_store = pd.DataFrame({"a": [1, 2, 3, 4], "b": [2, 3, 4, 6]})
+# if you have only one file to store/output in your package
+DataStore(df, config).store_to()
+# if you have one of the multiple files for storage/output, you need specify the file name
+DataStaore(df, config).store_to("test2.csv")
 
 ```
 

@@ -31,7 +31,7 @@ class TestDataStore:
         file_path = DataStore(data_to_store, "test.yaml").store_to()
         assert os.path.exists(file_path)
 
-        file_path = DataStore(data_to_store, "test2.yaml", "test_out2.csv").store_to()
+        file_path = DataStore(data_to_store, "test2.yaml", ).store_to("test_out2.csv")
         assert os.path.exists(file_path)
 
 
