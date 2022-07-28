@@ -9,7 +9,7 @@
 
 ## Installation
 
-`data_io` relied on a Python package manager for its installation. Make sure `pip` is installed and added into your system environmental variables, then copy & paste the following command in your terminal
+`data_io` relied on a Python package manager for its installation. Make sure `pip` is installed and added into your system environmental variables, then copy & paste the following command in your terminal.
 
 ```shell
 python -m pip install "git+https://{your_user_name}:{your_password}@source.coderefinery.org/krproject/architecture/utils/data_io.git#egg=data_io"
@@ -17,7 +17,7 @@ python -m pip install "git+https://{your_user_name}:{your_password}@source.coder
 
 ## Usage
 
-To use the package, a `schema.yaml` file to specify. Currently, the template `schema.yaml` looks like:
+To use the package, a `schema.yaml` file must be established first. `INPUT` and `OUTPUT` must be specified. Currently, the template `schema.yaml` looks like:
 
 ```yaml
 pkg_name: test
@@ -62,8 +62,10 @@ DataStaore(df, config).store_to("test2.csv")
 
 ## Features
 
-- An standardized IO process for tublar data in the KR project
+- An standardized IO process for tublar data in the KR project.
+- Support specifying multiple input and output files in the configuration file.
+- Support retrieval from multiple `.csv` files as multiple `DataFrame`.
 
 ### Upcoming features
 
-- Add the capability of reading in multiple files as multiple `DataFrame`
+- coming soon.
