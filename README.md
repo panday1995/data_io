@@ -45,18 +45,18 @@ from data_io import DataStore, DataRetri
 config = "schema.yaml"
 
 # to retrieve all .csv files and read in as a dictionary with file_name as key and DataFrame as value
-data_dict = DataRetri(config).retrieve_all()
+data_dict = DataRetri().retrieve_all() # equivalent to DataRetri(config=config).retrieve_all()
 
 # to retrieve only one .csv file and read in as a DataFrame
 file_name = "test.csv"
-df = DataRetri(config).retrieve_one(file_name)
+df = DataRetri().retrieve_one(file_name)
 
 # to store a DataFrame into a path as a .csv file
 data_to_store = pd.DataFrame({"a": [1, 2, 3, 4], "b": [2, 3, 4, 6]})
 # if you have only one file to store/output in your package
-DataStore(df, config).store_to()
+DataStore(df).store_to()
 # if you have one of the multiple files for storage/output, you need specify the file name
-DataStaore(df, config).store_to("test2.csv")
+DataStaore(df).store_to("test2.csv")
 
 ```
 
