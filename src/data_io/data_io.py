@@ -28,7 +28,7 @@ class DataStore:
 
     def _read_input(self, file_name):
         output_ls = self.cfg_dict["OUTPUT"]
-        if len(output_ls)<=1:
+        if len(output_ls) <= 1:
             return output_ls[0]["OUTPUT_PATH"], output_ls[0]["OUTPUT_FILE"]
 
         else:
@@ -38,7 +38,7 @@ class DataStore:
                 else:
                     print("file not registered in the config file")
 
-    def store_to(self,file_name=None):
+    def store_to(self, file_name=None):
         dir_path, file_name = self._read_input(file_name)
         file_path = os.path.join(dir_path, file_name)
         try:
@@ -71,11 +71,11 @@ class DataRetri:
 
     def _retrieve_data(self, file_path):
         try:
-            data = pd.read_csv(file_path)
+            data = pd.read_csv(file_path, encoding="ISO-8859-1")
         except:
             print(
                 "ParserError: import as pd.DataFrame is not support, the data is retrieved through pickle.load")
-            with open(file_path.split()[0]+".pickle", 'rb') as data_file:
+            with open(file_path.split(".")[0]+".pickle", 'rb') as data_file:
                 data = pickle.load(data_file)
         print(f"The file is retrived at {file_path}")
         return data
